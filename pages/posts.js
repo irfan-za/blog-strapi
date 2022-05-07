@@ -2,12 +2,41 @@ import Layout from '@components/Layout';
 import Container from '@components/Container';
 import CardPost from '@components/CardPost';
 import SectionHeader from '@components/SectionHeader';
-import mockPosts from '../utils/posts.json';
 import Head from 'next/head';
 import { useState } from 'react';
+import qs from 'qs'
 
-export default function Posts() {
-  const [posts, setPosts] = useState(mockPosts);
+export async function getServerSideProps(){
+  const query = qs.stringify({
+    populate:{
+      category:{
+        populate: '*'
+      },
+      thumbnail:{
+        populate: '*'
+      },
+      author: {
+        populate: ['avatar'],
+      }
+    }
+  }, {
+    encodeValuesOnly: true,
+  });
+
+  const req= await fetch(process.env.APIURL + '/posts?' + query)
+  const res= await req.json()
+
+  if(res.data.length < 1){
+    res.data[0].attributes={}
+  }
+  return{
+    props:{
+      res:res.data
+    }
+  }
+}
+export default function Posts({res}) {
+  const [posts, setPosts] = useState(res);
 
   return (
     <Layout>
@@ -25,7 +54,7 @@ export default function Posts() {
           <div className="flex -mx-4 flex-wrap mt-6">
             {posts.map(post => (
               <div key={post.id} className="md:w-4/12 w-full px-4 py-6">
-                <CardPost {...post} />
+                <CardPost {...post.attributes} />
               </div>
             ))}
           </div>
