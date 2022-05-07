@@ -4,7 +4,8 @@
   "info": {
     "singularName": "author",
     "pluralName": "authors",
-    "displayName": "author"
+    "displayName": "author",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,20 +13,23 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "job": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "posts": {
       "type": "relation",
