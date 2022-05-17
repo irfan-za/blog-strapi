@@ -28,7 +28,7 @@ export async function getServerSideProps(){
   const featured= await reqFeatured.json()
   const req= await fetch(process.env.APIURL + '/posts?' + query)
   const res= await req.json()
-  console.log("PANJANG",featured.data)
+  // console.log("PANJANG",featured.data)
 
   if(featured.data.length < 1){
     featured.data[0].attributes={}
@@ -45,9 +45,9 @@ export async function getServerSideProps(){
 }
 
 export default function Home({featured,res}) {
-  console.log("featured",featured)
+  // console.log("featured",featured)
   const [posts, setPosts] = useState(res);
-  console.log(posts)
+  // console.log(posts)
 
 
   return (
@@ -56,6 +56,9 @@ export default function Home({featured,res}) {
         <title>Home &mdash; Epictetus</title>
       </Head>
       <Container>
+        <button onClick={()=>{
+          document.cookie='token = 12345; path=/'
+        }}>go to About </button>
         <FeaturedPost {...featured}  />
         <div className="flex -mx-4 flex-wrap mt-6">
           {posts.length > 0 && posts.map(post => (

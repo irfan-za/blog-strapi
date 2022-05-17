@@ -3,12 +3,12 @@ import InfoPost from '@components/InfoPost';
 
 
 export default function FeaturedPost({...featured}) {
-  console.log(featured);
+  // console.log(featured);
   const {author, category, headline, publishedAt, thumbnail, title} = featured;
 
   const options = {year: 'numeric', month: 'long', day: 'numeric' }
   const date = new Date(publishedAt).toLocaleString("en-US", options)
-  console.log(date)
+  // console.log(date)
 
 
   return (

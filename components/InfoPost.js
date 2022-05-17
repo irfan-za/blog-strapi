@@ -11,13 +11,13 @@ export default function InfoPost({
   authorJob
 }) {
   // console.log(props)
-  console.log("SSSS",category,
-    date,
-    title,
-    shortDescription,
-    authorAvatar,
-    authorName,
-    authorJob)
+  // console.log("SSSS",category,
+    // date,
+    // title,
+    // shortDescription,
+    // authorAvatar,
+    // authorName,
+    // authorJob)
   return (
     <>
       <PostMetaTitle 
