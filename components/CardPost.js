@@ -12,7 +12,7 @@ export default function CardPost({...infoPost}) {
       <Link href="/detail">
         <a>
           <img 
-          src={process.env.NEXT_PUBLIC_IMGURL + thumbnail.data.attributes.url} 
+          src={process.env.NEXT_PUBLIC_URL + thumbnail.data.attributes.url} 
           alt={thumbnail.data.attributes.alternativeText} 
           className="w-full rounded mb-4" />
         </a>
@@ -22,7 +22,7 @@ export default function CardPost({...infoPost}) {
         date={date}
         title={title}
         shortDescription={headline}
-        authorAvatar={process.env.NEXT_PUBLIC_IMGURL+author.data.attributes.avatar.data.attributes.url}
+        authorAvatar={process.env.NEXT_PUBLIC_URL+author.data.attributes.avatar.data.attributes.url}
         authorName={author.data.attributes.name}
         authorJob={author.data.attributes.job}
         />

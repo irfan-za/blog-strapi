@@ -28,7 +28,6 @@ export async function getServerSideProps(){
   const featured= await reqFeatured.json()
   const req= await fetch(process.env.APIURL + '/posts?' + query)
   const res= await req.json()
-  // console.log("PANJANG",featured.data)
 
   if(featured.data.length < 1){
     featured.data[0].attributes={}
@@ -45,9 +44,7 @@ export async function getServerSideProps(){
 }
 
 export default function Home({featured,res}) {
-  // console.log("featured",featured)
   const [posts, setPosts] = useState(res);
-  // console.log(posts)
 
 
   return (

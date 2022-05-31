@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 export default function middleware(req){
     const { token } =  req.cookies;
-    console.log("token",token); 
     const url= req.nextUrl.clone()
     url.pathname = '/'
 

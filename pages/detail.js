@@ -56,11 +56,11 @@ export default function Detail({featured}) {
           <PostAuthor
             authorName={author.data.attributes.name}
             authorJob={author.data.attributes.job}
-            authorAvatar={process.env.NEXT_PUBLIC_IMGURL+author.data.attributes.avatar.data.attributes.url}
+            authorAvatar={process.env.NEXT_PUBLIC_URL+author.data.attributes.avatar.data.attributes.url}
           />
         </div>
         <div className="md:w-10/12 w-full mx-auto my-10">
-          <img src={process.env.NEXT_PUBLIC_IMGURL+thumbnail.data.attributes.url} className="w-full rounded-lg" />
+          <img src={process.env.NEXT_PUBLIC_URL+thumbnail.data.attributes.url} className="w-full rounded-lg" />
         </div>
         <div className="md:w-8/12 w-full mx-auto leading-relaxed">
           <p>{content}</p>
