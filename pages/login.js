@@ -3,19 +3,19 @@ import Link from 'next/link'
 import nookies from 'nookies'
 import Router from 'next/router'
 
-export async function getServerSideProps(ctx){
-  const cookies= nookies.get(ctx)
-  if(cookies.token){
-    return {
-      redirect :{
-        destination : '/admin'
-      }
-    }
-  }
-  return {
-    props: {}
-  }
-}
+// export async function getServerSideProps(ctx){
+//   const cookies= nookies.get(ctx)
+//   // if(cookies.token){
+//   //   return {
+//   //     redirect :{
+//   //       destination : '/admin'
+//   //     }
+//   //   }
+//   // }
+//   return {
+//     props: {}
+//   }
+// }
 
 export default function Login(){
   const [fields, setFields] = useState({})
@@ -41,6 +41,7 @@ export default function Login(){
       body: JSON.stringify(fields)
     })
     const res = await req.json()
+    console.log(res)
     if(res.jwt){
       nookies.set(null, 'token', res.jwt)
       Router.replace('/admin')

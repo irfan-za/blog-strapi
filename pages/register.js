@@ -2,21 +2,6 @@ import {useState} from 'react'
 import nookies from 'nookies'
 import Router  from 'next/router'
 
-export async function getServerSideProps(ctx){
-  const cookies= nookies.get(ctx)
-  if(cookies.token){
-    return {
-      redirect :{
-        destination : '/admin'
-      }
-    }
-  }
-  return {
-    props: {}
-  }
-}
-
-
 export default function Register(){
   const [fields, setFields] = useState({})
   const [errorAlert, setErrorAlert] = useState(false)
@@ -45,7 +30,9 @@ export default function Register(){
     res.error ?setErrorAlert(true) : e.target.reset()
     res.user ?(setSuccessAlert(true), setErrorAlert(false)) : setErrorAlert(true)
     if(res.jwt){
-      nookies.set(null, 'token', res.jwt)
+      nookies.set(null, 'token', res.jwt,{
+        httpOnly: true
+      })
       Router.replace('/admin')
     }
 
